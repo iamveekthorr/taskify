@@ -1,13 +1,18 @@
 <template>
     <div class="custom-input-container" :style="computedStyles">
         <slot />
-        <input type="text" name="todo" value="what do you want to do today?" class="custom-input" />
+        <input type="text" name="todo" placeholder="what do you want to do today?" class="custom-input" v-model="todo" />
+        <p>{{ todo }}</p>
     </div>
 </template>
 
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
+
+const todo = ref('')
+
+console.log(todo.value);
 
 // Define a prop
 const props = defineProps({

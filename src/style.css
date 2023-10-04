@@ -20,6 +20,14 @@
   --text-color-dark: hsl(234, 39%, 85%);
   --card-bg-dark: hsl(235, 24%, 19%);
   --card-bg-light: hsl(0, 0%, 98%);
+  --check-bg-color-base: hsl(192, 100%, 67%);
+  --check-bg-color-secondary: hsl(280, 87%, 65%);
+
+  --check-mark-linear-gradient-bg: linear-gradient(
+    to right bottom,
+    var(--check-bg-color-base),
+    var(--check-bg-color-secondary)
+  );
 }
 
 *,

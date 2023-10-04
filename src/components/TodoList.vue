@@ -5,7 +5,7 @@
             <nav class="todo-heading-and-input-container">
                 <ThemeToggle />
                 <TodoItemInput :isDarkMode="theme.isDarkMode">
-                    <div class="circle">&nbsp;</div>
+                    <ActiveIcon />
                 </TodoItemInput>
             </nav>
 
@@ -24,6 +24,7 @@
 import ThemeToggle from '@/components/ThemeToggle.vue';
 import Footer from '@/components/Footer.vue';
 import TodoItemInput from '@/components/TodoItemInput.vue';
+import ActiveIcon from '@/components/ActiveIcon.vue';
 
 import { useThemeStore } from '@/store/theme';
 
@@ -51,11 +52,10 @@ const theme = useThemeStore()
 
 .app-container> :first-child {
     margin-bottom: 2rem;
-    ;
 }
 
 .todo-heading-and-input-container> :first-child {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     ;
 }
 
@@ -66,14 +66,6 @@ const theme = useThemeStore()
     transform: translateX(50%);
 }
 
-
-.circle {
-    height: 2rem;
-    width: 2rem;
-    background: orangered;
-    border-radius: 50%;
-    min-width: 2rem;
-}
 
 @media only screen and (min-width: 64em) {
     .todo-list-container {
