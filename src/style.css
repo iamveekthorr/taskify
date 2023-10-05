@@ -22,6 +22,7 @@
   --card-bg-light: hsl(0, 0%, 98%);
   --check-bg-color-base: hsl(192, 100%, 67%);
   --check-bg-color-secondary: hsl(280, 87%, 65%);
+  --border-color: hsl(237, 14%, 26%);
 
   --check-mark-linear-gradient-bg: linear-gradient(
     to right bottom,

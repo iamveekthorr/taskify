@@ -1,15 +1,5 @@
 import { defineStore } from 'pinia';
-
-interface Todo {
-  id: number;
-  text: string;
-  completed: boolean;
-  tags: string[];
-}
-
-enum STORAGE_KEYS {
-  GET_TODOS = 'GET_TODOS',
-}
+import { Todo } from '@/types/todo.types';
 
 export const useTodoStore = defineStore('todos', {
   state: () => ({
@@ -18,10 +8,7 @@ export const useTodoStore = defineStore('todos', {
 
   getters: {
     getAllTodo(): Todo[] {
-      const storedData = localStorage.getItem(STORAGE_KEYS.GET_TODOS);
-      if (!storedData) return [];
-
-      return JSON.parse(storedData) as Todo[];
+      return this.todos as Todo[];
     },
   },
 
@@ -29,7 +16,8 @@ export const useTodoStore = defineStore('todos', {
     addTodo(todo: Todo) {
       this.todos.push(todo);
     },
-    removeTodo(todoId: number) {
+
+    removeTodo(todoId: string) {
       const index = this.todos.findIndex((todo) => todo.id === todoId);
       if (index !== -1) {
         this.todos.splice(index, 1);

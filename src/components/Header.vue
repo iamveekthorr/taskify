@@ -35,8 +35,8 @@ const theme = useThemeStore()
     position: relative;
 }
 
-.header-image-container {
-    width: 100vw;
+.header-image-container>img {
+    width: 100%;
 }
 
 .header-image-container>img {

@@ -1,22 +1,13 @@
 <template>
-    <div class="circle" @click="doToggle" :style="computedStyles">
+    <div class="circle" @click="doToggle" :data-isToggled="isToggled">
         <CheckIcon v-if="isToggled" />
     </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import CheckIcon from '@/components/CheckIcon.vue';
-import { useToggle } from '@/hooks/useToggle.composable';
 
-const { doToggle, isToggled } = useToggle()
-
-const computedStyles = computed(() => ({
-    background: isToggled.value ? 'var(--check-mark-linear-gradient-bg)' : 'transparent',
-    border: isToggled.value ? 'none' : '1px solid',
-    borderColor: 'var(--text-color-dark)'
-}))
-
+const { isToggled, doToggle } = defineProps<{ isToggled: boolean, doToggle: () => void }>()
 
 </script>
 
@@ -30,6 +21,14 @@ const computedStyles = computed(() => ({
     place-items: center;
     position: relative;
     transition: background 0.3s;
+    background: transparent;
+    border: 1px solid;
+    border-color: var(--text-color-dark);
+}
+
+.circle[data-isToggled="true"] {
+    background: var(--check-mark-linear-gradient-bg);
+    border: none;
 }
 
 .circle:hover {
@@ -48,6 +47,6 @@ const computedStyles = computed(() => ({
 }
 
 .circle:hover {
-    background: var(--check-mark-linear-gradient-bg);
+    border-color: var(--check-mark-linear-gradient-bg);
 }
 </style>
